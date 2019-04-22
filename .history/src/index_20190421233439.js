@@ -18,20 +18,21 @@ class App extends React.Component {
     Axios.get(url).then(response => {
       this.setState({ response: response.data })
       .catch(error => {console.log(`error: ${error.message}`) });
-    });}
+    });
+  }
 
   //update Data
   updatePost(id, isTitle, isType, isStatus){
-    Axios.put(url + '/' + id, {
+    axios.put(url + '/' + id, {
     title: isTitle,
     type: isType,
     column: isStatus
-    }).then(response => {
+  }).then(response => {
     console.log(response);
-    }).catch(error => {
+  }).catch(error => {
     console.log(error);
-    });
-  }
+  });
+}
 
   //delete Data
   deletePost(id){
@@ -59,10 +60,9 @@ class App extends React.Component {
 
   render(){
     console.log(this.state.response);
-    const taskRows = this.state.response.map((task, index) => {
+    const taskRows = this.state.response.map((task) => {
       return <Row 
-      key = {index}
-      taskTitle = {task.title}
+      taskItem = {task.title}
       taskType = {task.type}
       taskStatus = {task.column}
       />;

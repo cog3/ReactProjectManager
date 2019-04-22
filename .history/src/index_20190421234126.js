@@ -59,9 +59,8 @@ class App extends React.Component {
 
   render(){
     console.log(this.state.response);
-    const taskRows = this.state.response.map((task, index) => {
+    const taskRows = this.state.response.map((task) => {
       return <Row 
-      key = {index}
       taskTitle = {task.title}
       taskType = {task.type}
       taskStatus = {task.column}
