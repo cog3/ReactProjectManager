@@ -1,0 +1,16 @@
+.li{
+    text-decoration: none;
+    margin: 3em;
+    text-align: center;
+    display: inline;
+}
+.ul{
+    float: left;
+}
+.container{
+    margin-bottom: 3em;
+}
+.button-clicked{
+    text-decoration-color: pink;
+    color: pink;
+}

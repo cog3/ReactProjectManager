@@ -4,7 +4,7 @@ class Tabs extends React.Component{
     
     
     onTabClick(tabName) {
-        this.props.viewChange(tabName);
+        this.props.onViewChange(tabName);
     }
 
     render(){
@@ -12,7 +12,7 @@ class Tabs extends React.Component{
         return(
             <ul>
                 <li>
-                <a onClick={(e) => this.onTabClick('app')}>Grid View</a>
+                <a onClick={(e) => this.onTabClick('page1')}>Grid View</a>
                 </li>
                 <li>
                 <a onClick={(e) => this.onTabClick('listview')}>List View</a>

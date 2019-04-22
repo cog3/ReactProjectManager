@@ -1,0 +1,12 @@
+.li{
+    text-decoration: none;
+    margin: auto;
+    text-align: center;
+    display: inline;
+}
+.ul{
+    float: left;
+}
+.container{
+    margin-bottom: 3em;
+}

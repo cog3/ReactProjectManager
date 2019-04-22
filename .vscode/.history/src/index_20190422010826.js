@@ -2,10 +2,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 //import functional components
-import Row from './Row'; 
-import Tabs from './Tabs';
-import ListView from './ListView';
-import AddItem from './AddItem';
+import Row from './Row' 
+import taskView from './taskView';
+import listView from './listView';
+import addItem from './addItem';
 //import Axios
 import Axios from 'axios';
 //import CSS
@@ -15,8 +15,7 @@ const url = "https://my-json-server.typicode.com/bnissen24/project2DB/posts";
 
 class App extends React.Component {
   state = { 
-    response: [],
-    view: 'app'
+    response: []
   };
 
 
@@ -24,8 +23,7 @@ class App extends React.Component {
     Axios.get(url).then(response => {
       this.setState({ response: response.data })
       .catch(error => {console.log(`error: ${error.message}`) });
-    });
-  }
+    });}
 
   //update Data
   updatePost(id, isTitle, isType, isStatus){
@@ -59,31 +57,16 @@ class App extends React.Component {
     });
   }
 
-  
+changeView(view){
+  this.setState({view: view});
+}
+
   componentDidMount(){
-      this.getData();
+    this.getData();
   }
-
-  viewChange(view){
-    this.setState({ view });
-  }
-
-
-  formatDivs(jsxcode){
-    let { view } = this.state;
-    return(
-      <div>
-        <Tabs viewChange={this.viewChange.bind(this)}/>
-        {jsxcode}
-      </div>
-    );
-  }
-
-
-
 
   render(){
-    
+    console.log(this.state.response);
     const taskRows = this.state.response.map((task, index) => {
       return <Row 
       key = {index}
@@ -92,48 +75,24 @@ class App extends React.Component {
       taskStatus = {task.column}
       />;
     });
-
-    const {view} = this.state;
-
-    switch (view){
-      case 'app':{
-        return(this.formatDivs(<App />))
-      }
-      case 'listview':{
-        return(this.formatDivs(<ListView />))
-      }
-      case 'additem':{
-        return(this.formatDivs(<AddItem />))
-      }
-      default:
-        return <h2>Invalid Tab My Guy</h2>
-    }
-    // if(this.state.response){
-
-    // }
-    // else{
-    //   return(
-    //     <table>
-    //       <tbody>
-    //         {taskRows}
-    //       </tbody>      
-    //     </table>
-
-    //   )
-      return( 
-        
-          <h1>This is the App Component mmg</h1>
-      
-        // <div>
-        //     <ul className = "ul">
-        //       <li className = "li"><a href="#">Task View</a></li>
-        //       <li className = "li"><a href="#">List View</a></li>
-        //       <li className = "li"><a href="#">Add View</a></li>
-        //     </ul>
-        // </div>
-      );
-    }
-    
+    return( 
+    <div className = "table">
+      <div className = "container">
+          <ul className = "ul">
+            <li className = "li">Task View</li>
+            <li className = "li">List View</li>
+            <li className = "li">Add Task</li>
+          </ul>
+          <hr></hr>
+      </div>
+      <table>
+        <tbody>
+          {taskRows}
+        </tbody>      
+      </table>
+    </div>
+    );
+  }
 }
 ReactDOM.render(
   <App />,

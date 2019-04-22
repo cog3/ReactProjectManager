@@ -5,9 +5,9 @@ class AddItem extends React.Component{
     render(){
 
         return(
-            <h1>"This is the Add Item page!"</h1>
+            <h1>"This is List View!"</h1>
         );
     }
 }
 
-export default AddItem;
+export default addItem;
