@@ -5,46 +5,44 @@ import ReactDOM from 'react-dom';
 import Row from './Row' 
 //import Axios
 import Axios from 'axios';
+import { compileFunction } from 'vm';
 
 const url = "https://my-json-server.typicode.com/bnissen24/project2DB/posts";
 
 class App extends React.Component {
   state = { 
     response: []
-  };
+    };
 
 
   getData(){
     Axios.get(url).then(response => {
-      this.setState({ response: response.data })
-      .catch(error => {console.log(`error: ${error.message}`) });
-    });}
+    this.setState({ response: response.data })
+    .catch(error => {
+    console.log(`error: ${error.message}`) });
+    });
+  }
 
   //update Data
   updatePost(id, isTitle, isType, isStatus){
-    Axios.put(url + '/' + id, {
+    axios.put(url + '/' + id, {
     title: isTitle,
     type: isType,
     column: isStatus
-    }).then(response => {
+  }).then(response => {
     console.log(response);
-    }).catch(error => {
-    console.log(error);
-    });
-  }
+  }).catch(error => {
+    console.log(err);
+  });
+}
 
   //delete Data
-  deletePost(id){
-    Axios.delete(url + '/' + id)
-    .then(res =>{
-      console.log(res);
-    }).catch(error =>{
-      console.log(error);
-    });
+  deletePost(){
+    Axios.delete()
   }
 
   //add Data
-  addData(isTitle, isType, isStatus){
+  addData(id,isTitle, isType, isStatus){
     Axios.post(url,{
       title: isTitle,
       type: isType,
@@ -58,23 +56,20 @@ class App extends React.Component {
   }
 
   render(){
+    const message = "Hello World!";
     console.log(this.state.response);
-    const taskRows = this.state.response.map((task, index) => {
-      return <Row 
-      key = {index}
-      taskTitle = {task.title}
-      taskType = {task.type}
-      taskStatus = {task.column}
-      />;
+    const taskRows = this.state.response.map((task) => {
+      return <Row taskItem = {task.title}/>;
     });
     return( 
     <div>
+      <h1>{message}</h1>
       <table className = "table">
         <tbody>
           {taskRows}
         </tbody>      
       </table>
-    </div>
+      </div>
     );
   }
 }
