@@ -1,4 +1,5 @@
 import React from "react";
+//import ReactDOM from 'react-dom';
 
 class ListView extends React.Component{
     state = {
@@ -12,4 +13,4 @@ class ListView extends React.Component{
         );
     }
 }
-export default ListView;
+export default listView;

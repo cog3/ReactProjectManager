@@ -12,4 +12,4 @@ class ListView extends React.Component{
         );
     }
 }
-export default ListView;
+export default listView;

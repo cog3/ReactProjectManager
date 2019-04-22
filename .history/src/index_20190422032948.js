@@ -4,8 +4,8 @@ import ReactDOM from 'react-dom';
 //import functional components
 import Row from './Row'; 
 import Tabs from './Tabs';
-import ListView from './ListView';
-import AddItem from './AddItem';
+//import ListView from './listView';
+//import AddItem from './addItem';
 //import Axios
 import Axios from 'axios';
 //import CSS

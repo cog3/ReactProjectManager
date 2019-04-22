@@ -4,7 +4,7 @@ class Tabs extends React.Component{
     
     
     onTabClick(tabName) {
-        this.props.viewChange(tabName);
+        this.props.onViewChange(tabName);
     }
 
     render(){
